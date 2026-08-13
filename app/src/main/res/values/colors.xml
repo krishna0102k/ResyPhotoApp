@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="resy_header">#171717</color>
+    <color name="resy_header_dark">#000000</color>
+    <color name="resy_accent">#D62D20</color>
+    <color name="resy_background">#FFFFFF</color>
+    <color name="resy_text_primary">#1A1A1A</color>
+    <color name="resy_divider">#E5E5E5</color>
+    <color name="resy_on_dark">#FFFFFF</color>
+</resources>

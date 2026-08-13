@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.ResyPhotoApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/resy_header</item>
+        <item name="colorPrimaryDark">@color/resy_header_dark</item>
+        <item name="colorAccent">@color/resy_accent</item>
+        <item name="android:colorBackground">@color/resy_background</item>
+        <item name="android:textColorPrimary">@color/resy_text_primary</item>
+        <item name="android:listDivider">@drawable/list_divider</item>
+        <item name="android:statusBarColor">@color/resy_header</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ResyPhotoApp</string>
+    <string name="unable_to_load_photos">Unable to load photos.</string>
+    <string name="no_photos_available">No photos available.</string>
+    <string name="retry">Retry</string>
+    <string name="scroll_to_top">Scroll to top</string>
+    <string name="back">Back</string>
+    <string name="unable_to_load_image">Unable to load image.</string>
+</resources>
