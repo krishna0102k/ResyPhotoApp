@@ -1,149 +1,53 @@
 # Resy Photo App
 
-## Overview
-This is a small Android application created for the Resy take-home assignment.
+Small Android app built for the Resy take-home assignment.
 
-The application:
-* loads image metadata from Lorem Picsum
-* displays filenames in a list
-* opens a selected image in a detail screen
-* displays the image author
-* preserves the original image aspect ratio
-* positions landscape and portrait content according to the assignment
+The app loads photo metadata from Lorem Picsum, displays the filenames in a list, and opens a detail screen showing the selected image and its author.
 
-## Requirements Implemented
-* Photo list loaded from `https://picsum.photos/list`
-* API response converted into Kotlin `Photo` objects
-* Filename displayed for every list item
-* Selecting a row opens the detail screen
-* Selected image displayed on detail screen
-* Author displayed directly below image
-* Landscape image + author group vertically centered
-* Portrait image + author group positioned at top
-* Full-width image display
-* Original aspect ratio preserved
-* No cropping
-* No distortion
-* Back navigation
-* Phone portrait orientation
-* Required unit tests
-* No third-party libraries
+## Implementation
 
-## Architecture
-The solution intentionally uses a lightweight architecture appropriate for the size of the take-home.
+* Kotlin + XML Views
+* RecyclerView for the photo list
+* `HttpURLConnection` for API and image requests
+* `org.json` for parsing the list response
+* `BitmapFactory` for image decoding
+* ViewBinding for view access
 
-```text
-PhotoListActivity
-        |
-        v
-PhotoRepository
-        |
-        v
-PicsumApi
-        |
-        v
-Lorem Picsum API
-```
+No third-party libraries are used.
 
-For detail image loading:
-```text
-PhotoDetailActivity
-        |
-        v
-ImageUrlBuilder
-        |
-        v
-ImageDownloader
-        |
-        v
-Lorem Picsum Image API
-```
+The project is intentionally kept simple since the assignment only requires two screens.
 
-Responsibilities are separated without introducing unnecessary framework layers.
+## Image behavior
 
-## Project Structure
-```text
-com.example.resyphotoapp
-├── data
-│   ├── PhotoRepository.kt
-│   └── model
-│       └── Photo.kt
-├── network
-│   └── PicsumApi.kt
-├── ui
-│   ├── list
-│   │   ├── PhotoListActivity.kt
-│   │   └── PhotoAdapter.kt
-│   └── detail
-│       └── PhotoDetailActivity.kt
-└── util
-    ├── ImageDownloader.kt
-    ├── ImageOrientation.kt
-    └── ImageUrlBuilder.kt
-```
+Images are requested using the dimensions returned by the API while preserving the original aspect ratio.
 
-## Networking
-* `HttpURLConnection` is used because the assignment prohibits third-party libraries.
-* `org.json` is used for JSON parsing.
-* network calls execute on an `ExecutorService`.
-* UI updates return to the main thread.
+To avoid downloading unnecessarily large images, the requested width is based on the available screen width and the height is calculated from the original dimensions.
 
-This is a deliberate solution for the assignment constraints.
+Landscape images are vertically centered with the author shown underneath.
 
-## Image Loading
-* images are downloaded with `HttpURLConnection`
-* responses are decoded using `BitmapFactory`
-* no Glide, Coil, Picasso, or other third-party image loader is used
-* requested image width is based on the available screen width
-* requested height is calculated from original API dimensions
-* original aspect ratio is preserved
-* `adjustViewBounds=true`
-* `scaleType=fitCenter`
-* no image cropping or distortion
-
-## Portrait / Landscape Logic
-```text
-width > height -> LANDSCAPE
-otherwise -> PORTRAIT
-```
-
-Landscape:
-* image + author are treated as one block
-* block is vertically centered
-
-Portrait:
-* block is positioned at the top
-
-This logic is isolated in pure Kotlin so it can be unit tested.
+Portrait images are displayed from the top with the author directly below.
 
 ## Testing
-Local JVM unit tests cover:
-1. Portrait vs landscape determination
-2. Picsum image URL generation
 
-Current verified result:
-```text
-4 tests
-4 passed
-0 failed
-```
+Unit tests cover:
 
-## Build
+* Portrait vs. landscape image detection
+* Picsum image URL generation
+
+Run the tests with:
+
 ```bash
-./gradlew assembleDebug
 ./gradlew testDebugUnitTest
 ```
 
-If dependencies are already cached, offline verification can be run using:
+Build the project with:
+
 ```bash
-./gradlew assembleDebug --offline
-./gradlew testDebugUnitTest --offline
+./gradlew assembleDebug
 ```
 
-## Dependencies
-`No third-party libraries are used.`
+## Requirements
 
-Standard AndroidX components are used for normal Android application infrastructure.
-
-## Notes
-The application targets phone portrait orientation as required.
+* Android phone
+* Portrait orientation
+* Internet connection
