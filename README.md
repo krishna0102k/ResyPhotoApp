@@ -24,15 +24,15 @@ The photo list is loaded from:
 https://picsum.photos/list
 ```
 
-I convert the response into Kotlin `Photo` objects before displaying the filenames in the RecyclerView.
+I converted the response into Kotlin `Photo` objects before displaying the filenames in the RecyclerView.
 
 ## Image display
 
 For the detail screen, I followed the layout behavior described in the assignment.
 
-For landscape images, I vertically center the image and author together.
+For landscape images, I vertically centered the image and author together.
 
-For portrait images, I position the image at the top of the available content area with the author's name directly underneath.
+For portrait images, I positioned the image at the top of the available content area with the author's name directly underneath.
 
 The image itself fills the available width while keeping its original aspect ratio, without cropping or distortion.
 
@@ -42,7 +42,7 @@ Images are requested using the assignment's endpoint format:
 https://picsum.photos/[width]/[height]?image=<id>
 ```
 
-Rather than downloading very large source-resolution images, I use the available screen width and calculate the requested height from the original dimensions returned by the API. This keeps the same aspect ratio while using a more appropriate image size for the device.
+Rather than downloading very large source-resolution images, I useed the available screen width and calculate the requested height from the original dimensions returned by the API. This keeps the same aspect ratio while using a more appropriate image size for the device.
 
 ## Testing
 
@@ -72,3 +72,15 @@ To build the app:
 I configured the app for phones in portrait orientation, as required by the assignment.
 
 I also kept the UI fairly lightweight so the focus stays on the requested behavior and Android implementation rather than adding features outside the scope of the exercise.
+
+
+I have tested this on a Google Pixel 9 Running Android 17 QPR2 Beta2. 
+Below are the screenshots 
+
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/photo_list.png" width="250" alt="Photo list screen" />
+  <img src="screenshots/landscape_detail.png" width="250" alt="Landscape detail screen" />
+  <img src="screenshots/portrait_detail.png" width="250" alt="Portrait detail screen" />
+</p>
